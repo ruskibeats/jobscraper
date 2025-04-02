@@ -301,7 +301,8 @@ async def scrape_jobs_with_jobspy(search_query: dict) -> List[Dict[str, Any]]:
             if hasattr(job_row, "company_industry") and job_row.company_industry:
                 company_info += f" ({job_row.company_industry})"
             elif hasattr(job_row, "company_description") and job_row.company_description:
-                company_info += f" - {job_row.company_description[:100]}..."
+                company_description = str(job_row.company_description)
+                company_info += f" - {company_description[:100]}..."
         
         try:
             # Safely get job type
